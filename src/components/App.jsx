@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 import UserContext from "../Utilities/UserContext";
 
 function App() {
-  // added
+  const [theme, setTheme] = useState(false);
   const [userName, setUserName] = useState();
 
   useEffect(() => {
@@ -16,7 +16,9 @@ function App() {
   }, []);
 
   return (
-    <UserContext.Provider value={{ loggedInUser: userName, setUserName }}>
+    <UserContext.Provider
+      value={{ loggedInUser: userName, setUserName, theme, setTheme }}
+    >
       <div>
         <Header />
         {/* if path= /  */}

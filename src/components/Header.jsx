@@ -5,17 +5,19 @@ import { Link } from "react-router-dom";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { useContext } from "react";
 import UserContext from "../Utilities/UserContext";
+import { FaSun, FaMoon } from "react-icons/fa";
 
 const Header = () => {
   const online = useOnlineStatus();
   const [show, isShow] = useState(false);
   const handleClose = () => isShow(!show);
-  const data = useContext(UserContext);
+  const { theme, setTheme, loggedInUser } = useContext(UserContext);
 
+  console.log(theme);
   online ? "online" : "ofline";
   return (
     <>
-      <header className="w-full border p-4 flex justify-between items-center ">
+      <header className="w-full border p-4 flex justify-between items-center dark:bg-gray-700 bg-gray-300">
         <Link
           to="/"
           className="pl-4 text-5xl select-none cursor-pointer font-bold
@@ -38,12 +40,28 @@ const Header = () => {
             <p>About</p>
           </Link>
           <Link to="/groceries">Groceries</Link>
-          <p>Videos</p>
+
           {/* Added Last */}
           <Link to="/millionaires">Millionaires</Link>
           {/* for Context Learning */}
-          <Link>{data.loggedInUser}</Link>
+          <Link>{loggedInUser}</Link>
         </nav>
+        {/* Dark / light  */}
+        <div className="mr-3">
+          {theme ? (
+            <FaMoon
+              onClick={() => setTheme(!theme)}
+              className="text-grey-700 cursor-pointer"
+              size={30}
+            />
+          ) : (
+            <FaSun
+              onClick={() => setTheme(!theme)}
+              className="text-yellow-450 cursor-pointer"
+              size={30}
+            />
+          )}
+        </div>
 
         <div className="md:hidden mr-3" onClick={() => isShow(!show)}>
           {show ? (
