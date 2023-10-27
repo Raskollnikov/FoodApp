@@ -17,7 +17,13 @@ const RestaurantMenu = () => {
       "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
   );
 
-  const dummyData = "Dummy Data!";
+  const togglePanel = (index) => {
+    if (index === showIndex) {
+      setShowIndex(null);
+    } else {
+      setShowIndex(index);
+    }
+  };
 
   return (
     <>
@@ -64,7 +70,7 @@ const RestaurantMenu = () => {
                 key={each.card.card.title}
                 data={each?.card?.card}
                 showItems={i == showIndex ? true : false}
-                setShowIndex={() => setShowIndex(i)}
+                setShowIndex={() => togglePanel(i)}
               />
             );
           })}
