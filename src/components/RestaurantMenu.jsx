@@ -64,7 +64,6 @@ const RestaurantMenu = () => {
           {/* Categories */}
 
           {itemsCategory.map((each, i) => {
-            console.log(each.card.card);
             return (
               <ResCategory
                 key={each.card.card.title}
