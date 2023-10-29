@@ -1,8 +1,9 @@
 import Header from "./Header";
 import { Outlet } from "react-router-dom";
-// added
 import { useState, useEffect } from "react";
 import UserContext from "../Utilities/UserContext";
+import { Provider } from "react-redux";
+import appStore from "../Utilities/appStore";
 
 function App() {
   const [theme, setTheme] = useState(false);
@@ -16,16 +17,16 @@ function App() {
   }, []);
 
   return (
-    <UserContext.Provider
-      value={{ loggedInUser: userName, setUserName, theme, setTheme }}
-    >
-      <div>
-        <Header />
-        {/* if path= /  */}
-        {/* <MainContent /> */}
-        <Outlet />
-      </div>
-    </UserContext.Provider>
+    <Provider store={appStore}>
+      <UserContext.Provider
+        value={{ loggedInUser: userName, setUserName, theme, setTheme }}
+      >
+        <div>
+          <Header />
+          <Outlet />
+        </div>
+      </UserContext.Provider>
+    </Provider>
   );
 }
 

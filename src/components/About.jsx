@@ -1,6 +1,4 @@
-import { useState, Component } from "react";
-
-// console.log(Component);
+import { Component } from "react";
 
 // const User = (props) => {
 // const [count] = useState(0)
@@ -40,8 +38,6 @@ class UserWithClass extends Component {
   }
 
   render() {
-    console.log(this.state.data);
-    debugger;
     return (
       <div className="w-full flex gap-3 flex-wrap mt-5 cursor-pointer">
         {this.state.data.map((each) => {

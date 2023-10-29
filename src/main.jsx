@@ -8,6 +8,7 @@ import MainContent from "./components/MainContent.jsx";
 import RestaurantMenu from "./components/RestaurantMenu.jsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { lazy, Suspense } from "react";
+import Cart from "./components/Cart.jsx";
 //  added Last!
 import Millionaires from "./components/Millionaires.jsx";
 // Chunking
@@ -43,6 +44,10 @@ const appRouter = createBrowserRouter([
       {
         path: "/millionaires",
         element: <Millionaires />,
+      },
+      {
+        path: "/cart",
+        element: <Cart />,
       },
       {
         path: "/groceries",

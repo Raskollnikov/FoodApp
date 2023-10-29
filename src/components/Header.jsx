@@ -1,11 +1,16 @@
-import { FaPizzaSlice } from "react-icons/fa";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import useOnlineStatus from "../Utilities/UseOnlineStatus";
 import { Link } from "react-router-dom";
-import { FaBars, FaTimes } from "react-icons/fa";
-import { useContext } from "react";
 import UserContext from "../Utilities/UserContext";
-import { FaSun, FaMoon } from "react-icons/fa";
+import {
+  FaSun,
+  FaMoon,
+  FaPizzaSlice,
+  FaShoppingCart,
+  FaBars,
+  FaTimes,
+} from "react-icons/fa";
+import { useSelector } from "react-redux";
 
 const Header = () => {
   const online = useOnlineStatus();
@@ -13,11 +18,15 @@ const Header = () => {
   const handleClose = () => isShow(!show);
   const { theme, setTheme, loggedInUser } = useContext(UserContext);
 
-  console.log(theme);
+  // Subscribing to a store usinng a Selector!!!
+
+  const cart = useSelector((store) => store.cart.items);
+  console.log(cart);
+
   online ? "online" : "ofline";
   return (
     <>
-      <header className="w-full border p-4 flex justify-between items-center dark:bg-gray-700 bg-gray-300">
+      <header className="w-full border p-4 flex justify-between items-center">
         <Link
           to="/"
           className="pl-4 text-5xl select-none cursor-pointer font-bold
@@ -44,6 +53,11 @@ const Header = () => {
           {/* Added Last */}
           <Link to="/millionaires">Millionaires</Link>
           {/* for Context Learning */}
+          <Link to="cart">
+            <div className="flex items-center gap-2 justify-center">
+              <FaShoppingCart /> ({cart.length} items)
+            </div>
+          </Link>
           <Link>{loggedInUser}</Link>
         </nav>
         {/* Dark / light  */}
@@ -94,7 +108,13 @@ const Header = () => {
             Millionaires
           </Link>
         </li>
-
+        <li className="test">
+          <Link to="cart">
+            <div className="flex items-center gap-2 justify-center">
+              <FaShoppingCart /> (0 items)
+            </div>
+          </Link>
+        </li>
         <div className="flex flex-col my-4">
           <button className=" bg-green-400 px-8 py-3 mb-4 text-white font-bold">
             Sign In
