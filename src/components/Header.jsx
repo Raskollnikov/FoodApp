@@ -1,7 +1,7 @@
 import { useState, useContext } from "react";
 import useOnlineStatus from "../Utilities/UseOnlineStatus";
 import { Link } from "react-router-dom";
-import UserContext from "../Utilities/UserContext";
+
 import {
   FaSun,
   FaMoon,
@@ -16,7 +16,6 @@ const Header = () => {
   const online = useOnlineStatus();
   const [show, isShow] = useState(false);
   const handleClose = () => isShow(!show);
-  const { theme, setTheme, loggedInUser } = useContext(UserContext);
 
   // Subscribing to a store usinng a Selector!!!
 
@@ -58,11 +57,11 @@ const Header = () => {
               <FaShoppingCart /> ({cart.length} items)
             </div>
           </Link>
-          <Link>{loggedInUser}</Link>
+          {/* <Link>{loggedInUser}</Link> */}
         </nav>
         {/* Dark / light  */}
         <div className="mr-3">
-          {theme ? (
+          {/* {theme ? (
             <FaMoon
               onClick={() => setTheme(!theme)}
               className="text-grey-700 cursor-pointer"
@@ -74,7 +73,7 @@ const Header = () => {
               className="text-yellow-450 cursor-pointer"
               size={30}
             />
-          )}
+          )} */}
         </div>
 
         <div className="md:hidden mr-3" onClick={() => isShow(!show)}>

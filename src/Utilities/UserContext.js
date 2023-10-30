@@ -1,8 +1,10 @@
-import { createContext } from "react";
+// import { createContext } from "react";
 
-const UserContext = createContext({
-  loggedInUser: "Default",
-  theme: true,
-});
+// const UserContext = createContext({
+//   loggedInUser: "Default",
+//   theme: true,
+// });
 
-export default UserContext;
+// export default UserContext;
+
+// we don't use it anymore
