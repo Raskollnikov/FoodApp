@@ -2,4 +2,4 @@
 
 //npm run dev
 
-live URL: https://grand-florentine-203333.netlify.app/
+live URL: [Open in New Tab](https://example.com "Click to open in a new tab"){target="\_blank"}
