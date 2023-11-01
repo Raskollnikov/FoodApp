@@ -2,7 +2,7 @@ import ReactDOM from "react-dom/client";
 import App from "./components/App.jsx";
 import "./index.css";
 import About from "./components/About.jsx";
-import Contact from "./components/Contact.jsx";
+
 import Error from "./components/Error.jsx";
 import MainContent from "./components/MainContent.jsx";
 import RestaurantMenu from "./components/RestaurantMenu.jsx";
@@ -31,10 +31,6 @@ const appRouter = createBrowserRouter([
       {
         path: "/about",
         element: <About />,
-      },
-      {
-        path: "/contact",
-        element: <Contact />,
       },
       {
         path: "/restaurants/:id",

@@ -1,10 +1,10 @@
-import { useState, useContext } from "react";
+import { useState } from "react";
 import useOnlineStatus from "../Utilities/UseOnlineStatus";
 import { Link } from "react-router-dom";
 
 import {
-  FaSun,
-  FaMoon,
+  // FaSun,
+  // FaMoon,
   FaPizzaSlice,
   FaShoppingCart,
   FaBars,
@@ -20,7 +20,6 @@ const Header = () => {
   // Subscribing to a store usinng a Selector!!!
 
   const cart = useSelector((store) => store.cart.items);
-  console.log(cart);
 
   online ? "online" : "ofline";
   return (
@@ -41,9 +40,6 @@ const Header = () => {
         )}
       </p> */}
         <nav className="hidden md:flex gap-5 text-xl cursor-pointer spacing">
-          <Link to="/contact">
-            <p>Contact</p>
-          </Link>
           <Link to="/about">
             <p>About</p>
           </Link>
@@ -88,8 +84,8 @@ const Header = () => {
       <ul className={!show ? "hidden" : "bg-zinc-150 w-full px-8 py-5"}>
         {/* border-b-2 */}
         <li className="test">
-          <Link to="/contact" onClick={handleClose}>
-            Contact
+          <Link to="/restaurants" onClick={handleClose}>
+            Restaurants
           </Link>
         </li>
         <li className="test">
