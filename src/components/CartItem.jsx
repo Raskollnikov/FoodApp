@@ -1,20 +1,29 @@
 import { IMG_CDN_URL } from "../Utilities/ConstantLinks";
-import { FaStar } from "react-icons/fa";
-import { removeItem } from "../Utilities/cartSlice";
+import { FaDiscourse, FaStar } from "react-icons/fa";
+import { removeItem, addItem, removeTest } from "../Utilities/cartSlice";
 import { useDispatch } from "react-redux";
 
-function CartItem({ data, id }) {
+function CartItem({ data, id, items }) {
   const { name, imageId, category, price } = data;
   const { rating } = data.ratings.aggregatedRating;
   const dispatch = useDispatch();
   const image = "sppxmfyulsq2ncy0smx1";
+
   return (
     <div className="flex justify-between">
-      <img
-        src={IMG_CDN_URL + imageId}
-        alt={name}
-        className="h-full w-[200px]"
-      />
+      {imageId ? (
+        <img
+          src={IMG_CDN_URL + imageId}
+          alt={name}
+          className="h-full w-[200px]"
+        />
+      ) : (
+        <img
+          src={IMG_CDN_URL + image}
+          alt={name}
+          className="h-full w-[200px]"
+        />
+      )}
 
       <div className="h-full flex flex-col gap-3">
         <p className="font-bold text-3xl">{name.slice(0, 10)}</p>
@@ -26,9 +35,21 @@ function CartItem({ data, id }) {
       </div>
 
       <div className="h-full  mt-10 flex gap-2 items-center">
-        <button className="p-2 bg-gray-400 rounded-full">+</button>
-        <p>quantity</p>
-        <button className="p-2 bg-gray-400 rounded-full">-</button>
+        <button
+          className="p-2 bg-gray-400 rounded-full"
+          onClick={() => dispatch(addItem(data))}
+        >
+          +
+        </button>
+        <p>{items.filter((each) => each.id == id).length}</p>
+        <button
+          className="p-2 bg-gray-400 rounded-full"
+          onClick={() =>
+            dispatch(removeTest([items.find((item) => item.id === id)]))
+          }
+        >
+          -
+        </button>
       </div>
       <div className="mt-2 pr-3">
         <p className="font-bold select-none  ">{(price / 1000).toFixed(1)}$</p>

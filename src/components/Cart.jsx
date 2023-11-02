@@ -1,5 +1,4 @@
 import { useSelector } from "react-redux/es/hooks/useSelector";
-
 import { useDispatch } from "react-redux";
 import { clearCart } from "../Utilities/cartSlice";
 import { AiOutlineShoppingCart } from "react-icons/ai";
@@ -9,19 +8,23 @@ import { BsArrowLeftShort } from "react-icons/bs";
 
 function Cart() {
   const data = useSelector((each) => each.cart.items);
+
   const set = new Set([...data]);
   let da = Array.from(set);
   const dispatch = useDispatch();
   let total = data.reduce((total, item) => total + item.price, 0);
 
+  console.log(data);
+
   return (
     <div className="flex flex-col items-center gap-6 m-10">
       {da.length ? (
         <div className="w-[70%] flex flex-col gap-5 rounded-3xl shadow-2xl p-5 text-[#474747]">
-          <div className="w-full flex justify-between text-2xl font-bold select-none">
+          <div className="w-[90%]  m-auto flex justify-between text-2xl font-bold select-none">
             <p className="text-2xl font-bold select-none">
-              Cart Items {total / 1000}$
+              total:{(total / 1000).toFixed(1)}$
             </p>
+            <p className="text-2xl font-bold select-none">Cart Items</p>
             <button
               className="text-red-500"
               onClick={() => dispatch(clearCart())}
@@ -31,7 +34,7 @@ function Cart() {
           </div>
           <div className="w-[90%] m-auto mt-4 flex flex-col gap-7">
             {da.map((each) => (
-              <CartItem key={each.id} data={each} id={each.id} />
+              <CartItem key={each.id} data={each} items={data} id={each.id} />
             ))}
           </div>
         </div>
@@ -57,11 +60,6 @@ function Cart() {
       )}
     </div>
   );
-}
-{
-  /* <button onClick={() => dispatch(removeItem({ id: each.id }))}>
-                removeItem
-              </button> */
 }
 
 export default Cart;
