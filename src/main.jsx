@@ -2,12 +2,12 @@ import ReactDOM from "react-dom/client";
 import App from "./components/App.jsx";
 import "./index.css";
 import About from "./components/About.jsx";
-
 import Error from "./components/Error.jsx";
 import MainContent from "./components/MainContent.jsx";
 import RestaurantMenu from "./components/RestaurantMenu.jsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { lazy, Suspense } from "react";
+import Choice from "./components/Choice.jsx";
 import Cart from "./components/Cart.jsx";
 //  added Last!
 import Millionaires from "./components/Millionaires.jsx";
@@ -35,6 +35,10 @@ const appRouter = createBrowserRouter([
       {
         path: "/restaurants/:id",
         element: <RestaurantMenu />,
+      },
+      {
+        path: "/choice",
+        element: <Choice />,
       },
       // Added Last
       {

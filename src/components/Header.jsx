@@ -40,6 +40,7 @@ const Header = () => {
         )}
       </p> */}
         <nav className="hidden md:flex gap-5 text-xl cursor-pointer spacing">
+          <Link to="choice">Choose</Link>
           <Link to="/about">
             <p>About</p>
           </Link>
@@ -50,7 +51,8 @@ const Header = () => {
           {/* for Context Learning */}
           <Link to="cart">
             <div className="flex items-center gap-2 justify-center">
-              <FaShoppingCart /> ({cart.length} items)
+              <FaShoppingCart className="text-green-500" size={25} />
+              {cart.length}
             </div>
           </Link>
           {/* <Link>{loggedInUser}</Link> */}
