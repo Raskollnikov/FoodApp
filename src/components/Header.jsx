@@ -1,7 +1,9 @@
 import { useState } from "react";
 import useOnlineStatus from "../Utilities/UseOnlineStatus";
 import { Link } from "react-router-dom";
-
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { isDark } from "../Utilities/darkMode";
 import {
   // FaSun,
   // FaMoon,
@@ -10,17 +12,17 @@ import {
   FaBars,
   FaTimes,
 } from "react-icons/fa";
-import { useSelector } from "react-redux";
 
 const Header = () => {
   const online = useOnlineStatus();
   const [show, isShow] = useState(false);
   const handleClose = () => isShow(!show);
+  const dark = useSelector((store) => store.dark.isDarkMode);
 
   // Subscribing to a store usinng a Selector!!!
 
   const cart = useSelector((store) => store.cart.items);
-
+  const dispatch = useDispatch();
   online ? "online" : "ofline";
   return (
     <>
@@ -57,9 +59,13 @@ const Header = () => {
           </Link>
           {/* <Link>{loggedInUser}</Link> */}
         </nav>
+        <div className="flex gap-2">
+          {dark ? "dark" : "light"}
+          <button onClick={() => dispatch(isDark())}>change</button>
+        </div>
         {/* Dark / light  */}
-        <div className="mr-3">
-          {/* {theme ? (
+        {/* <div className="mr-3"> */}
+        {/* {theme ? (
             <FaMoon
               onClick={() => setTheme(!theme)}
               className="text-grey-700 cursor-pointer"
@@ -72,7 +78,7 @@ const Header = () => {
               size={30}
             />
           )} */}
-        </div>
+        {/* </div> */}
 
         <div className="md:hidden mr-3" onClick={() => isShow(!show)}>
           {show ? (
