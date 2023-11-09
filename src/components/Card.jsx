@@ -16,7 +16,7 @@ const Card = ({
   return (
     <div
       className="flex flex-col  border relative
-    rounded-xl justify-between items-center cursor-pointer "
+    rounded-xl justify-between items-center cursor-pointer"
     >
       <img
         className="w-full rounded-xl"
