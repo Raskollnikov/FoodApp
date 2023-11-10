@@ -8,19 +8,21 @@ import { BsArrowLeftShort } from "react-icons/bs";
 
 function Cart() {
   const data = useSelector((each) => each.cart.items);
-
+  const dark = useSelector((store) => store.dark.isDarkMode);
   const set = new Set([...data]);
   let da = Array.from(set);
   const dispatch = useDispatch();
   let total = data.reduce((total, item) => total + item.price, 0);
-
+  let test = dark ? "bg-indigo-100" : "bg-[#fff]";
   console.log(data);
 
   return (
-    <div className="flex flex-col items-center gap-6 m-10">
+    <div
+      className={`flex  flex-col items-center gap-6 w-full min-h-[86vh]  justify-center ${test}`}
+    >
       {da.length ? (
-        <div className="w-[70%] flex flex-col gap-5 rounded-3xl shadow-2xl p-5 text-[#474747]">
-          <div className="w-[90%]  m-auto flex justify-between text-2xl font-bold select-none">
+        <div className="w-[70%] mt-10 mb-10 bg-white flex flex-col gap-5 rounded-3xl shadow-2xl p-5 text-[#474747]">
+          <div className="w-[90%] bg-white m-auto flex justify-between text-2xl font-bold select-none">
             <p className="text-2xl font-bold select-none">
               total:{(total / 1000).toFixed(1)}$
             </p>
@@ -32,14 +34,14 @@ function Cart() {
               Clear All
             </button>
           </div>
-          <div className="w-[90%] m-auto mt-4 flex flex-col gap-7">
+          <div className="w-[90%] m-auto mt-4 flex flex-col gap-7 ">
             {da.map((each) => (
               <CartItem key={each.id} data={each} items={data} id={each.id} />
             ))}
           </div>
         </div>
       ) : (
-        <div className="w-full h-[60vh] flex flex-col gap-5 justify-center items-center ">
+        <div className="w-full  flex flex-col gap-5 justify-center items-center ">
           <div className="flex">
             <AiOutlineShoppingCart size={40} />
             <p className="text-3xl font-bold">Oops... Cart is empty</p>

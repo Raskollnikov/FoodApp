@@ -3,16 +3,21 @@ import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import { swiggy_api_URL } from "../Utilities/ConstantLinks";
-import { useParams } from "react-router-dom";
+
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
 const MainContent = () => {
   const [data, setData] = useState([]);
   const [search, setSearch] = useState("");
   const [filteredRestaurant, setFilteredRestaurant] = useState([]);
-  const { id } = useParams();
-  console.log(id);
+  console.log(filteredRestaurant[0]);
   const RestaurantIsOpen = withIfOpened(Card);
-  // IsOpen aggregatedDiscountInfoV3.header
+
+  const dark = useSelector((store) => store.dark.isDarkMode);
+  let test = dark ? "bg-indigo-100" : "bg-[#fff]";
+  let textTest = dark ? "text-white" : "text-black";
+  const dispatch = useDispatch();
 
   const searchBarFunc = (result, restoraunts) => {
     const results = restoraunts.filter((each) =>
@@ -51,10 +56,10 @@ const MainContent = () => {
   };
 
   return (
-    <main className="w-full flex justify-center p-6 ">
+    <main className={`w-full flex justify-center p-6 ${test}`}>
       <div className="w-[80%] flex flex-col">
         <div className="w-full  flex justify-center">
-          <div className="f-full md:w-6/12 flex justify-center p-3">
+          <div className="f-full md:w-6/12 flex justify-center p-3 mt-5">
             <input
               type="text"
               placeholder="Search....."
@@ -83,11 +88,11 @@ const MainContent = () => {
             Top
           </button> */}
 
-        {data.length === 0 ? (
+        {data?.length === 0 ? (
           <Shimmer />
         ) : (
-          <div className="w-full p-3 grid grid-cols-1 xl:grid-cols-5 md:grid-cols-2 sm:grid-cols-2 gap-4">
-            {filteredRestaurant.map((each) => (
+          <div className="w-full pb-10 mt-10 grid grid-cols-1 xl:grid-cols-4 md:grid-cols-2 gap-7">
+            {filteredRestaurant?.map((each) => (
               <Link key={each.info.id} to={`restaurants/${each.info.id}`}>
                 {each.info.isOpen ? (
                   <RestaurantIsOpen {...each.info} />

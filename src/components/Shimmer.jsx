@@ -1,7 +1,7 @@
 const ShimmerCard = () => {
   return (
     <div
-      className="flex flex-col gap-2 border
+      className="flex flex-col gap-2 border bg-white
 rounded-xl justify-between items-center cursor-pointer h-[300px] w-[170px]"
     >
       <div className=" rounded-xl bg-gray-200 w-[170px] h-[107px]"></div>

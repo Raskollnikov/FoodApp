@@ -13,6 +13,7 @@ import {
   FaMoon,
 } from "react-icons/fa";
 import { BiSolidSun } from "react-icons/bi";
+
 const Header = () => {
   const online = useOnlineStatus();
   const [show, isShow] = useState(false);
@@ -22,18 +23,18 @@ const Header = () => {
   const cart = useSelector((store) => store.cart.items);
   const dispatch = useDispatch();
   online ? "online" : "ofline";
-  let test = dark ? "bg-[#0022d2]" : "bg-[#fff]";
-
+  let test = dark ? "bg-blue-950" : "bg-[#fff]";
+  let textTest = dark ? "text-white" : "text-black";
   return (
     <>
-      <header
-        className={`w-full border p-4 flex justify-around items-center ${test}`}
-      >
-        <div className="w-[60%] flex items-center justify-between">
+      <header className={`w-full p-4 flex justify-around items-center ${test}`}>
+        <div
+          className={`w-[60%] flex items-center justify-between ${textTest}`}
+        >
           <Link
             to="/"
-            className="pl-4 text-5xl select-none cursor-pointer font-bold
-             uppercase color-red text-green-600"
+            className={`${textTest} pl-4 text-5xl  select-none cursor-pointer font-bold
+             uppercase color-red text-green-600`}
           >
             <FaPizzaSlice />
           </Link>
@@ -44,7 +45,9 @@ const Header = () => {
               <span className="bg-red-500 rounded-md p-2">ofline</span>
             )}
           </p>
-          <nav className="hidden md:flex gap-5 text-xl cursor-pointer spacing">
+          <nav
+            className={`hidden md:flex gap-5 text-xl cursor-pointer spacing ${textTest}`}
+          >
             <Link to="choice">Choose</Link>
             <Link to="/about">
               <p>About</p>
@@ -65,15 +68,15 @@ const Header = () => {
         <div>
           {" "}
           {dark ? (
-            <FaMoon
-              onClick={() => dispatch(isDark())}
-              className="text-gray-700 cursor-pointer"
-              size={32}
-            />
-          ) : (
             <BiSolidSun
               onClick={() => dispatch(isDark())}
               className="text-yellow-300 cursor-pointer font-bold"
+              size={32}
+            />
+          ) : (
+            <FaMoon
+              onClick={() => dispatch(isDark())}
+              className={`text-gray-700 cursor-pointer ${textTest}`}
               size={32}
             />
           )}

@@ -5,15 +5,17 @@ import { IMG_CDN_URL } from "../Utilities/ConstantLinks";
 import useRestaurantMenu from "../Utilities/useRestaurantMenu";
 import ResCategory from "./ResCategory";
 import { useState } from "react";
+import { useSelector } from "react-redux";
 
 const RestaurantMenu = () => {
   const { id } = useParams();
   const [showIndex, setShowIndex] = useState(0);
   const { ResInfo, Recomendations } = useRestaurantMenu(id);
-
-  const itemsCategory = Recomendations.filter(
+  const dark = useSelector((store) => store.dark.isDarkMode);
+  let test = dark ? "bg-indigo-100" : "bg-[#fff]";
+  const itemsCategory = Recomendations?.filter(
     (each) =>
-      each.card?.card?.["@type"] ===
+      each?.card?.card?.["@type"] ===
       "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
   );
 
@@ -30,7 +32,7 @@ const RestaurantMenu = () => {
       {ResInfo.length == 0 ? (
         <RestaurantShimmer />
       ) : (
-        <div className="w-[100%]">
+        <div className={`w-[100%] ${test}`}>
           {/* About Burger */}
           <div className="w-full bg-black p-8 flex items-center justify-center ">
             <div className="flex gap-5 p-2">
@@ -63,7 +65,7 @@ const RestaurantMenu = () => {
 
           {/* Categories */}
 
-          {itemsCategory.map((each, i) => {
+          {itemsCategory?.map((each, i) => {
             return (
               <ResCategory
                 key={each.card.card.title}

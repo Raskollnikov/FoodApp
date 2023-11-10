@@ -5,43 +5,45 @@ const Card = ({
   name,
   cuisines,
   area,
+  aggregatedDiscountInfoV3,
   lastMileTravelString,
   costForTwo,
   avgRating,
 }) => {
-  const rating = Math.min(Math.max(parseInt(avgRating), 1), 5);
-  const stars = Array.from({ length: rating }, (_, index) => (
-    <FaStar key={index} className="text-white" />
-  ));
+  // const rating = Math.min(Math.max(parseInt(avgRating), 1), 5);
+  // const stars = Array.from({ length: rating }, (_, index) => (
+  //   <FaStar key={index} className="text-white" />
+  // ));
   return (
     <div
-      className="flex flex-col  border relative
-    rounded-xl justify-between items-center cursor-pointer"
+      className={`select-none flex flex-col w-full shadow-xl relative p-3 rounded-xl justify-between items-start 
+      cursor-pointer bg-white gap-1`}
     >
       <img
-        className="w-full rounded-xl"
+        className="w-full rounded-xl "
         src={
           "https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_508,h_320,c_fill/" +
           cloudinaryImageId
         }
       />
-      <div className=" flex flex-col justify-between items-center p-3 gap-2 ">
-        <h2 className="font-bold">{name}</h2>
+      <div className=" flex flex-col justify-between items-start gap-2 ">
+        <h2 className="font-bold">{name.slice(0, 18)}</h2>
 
-        <h4 className=" flex justify-center items-center  text-center">
-          {cuisines.join(", ")}
+        <h4 className=" flex   text-center">
+          {cuisines.join(", ").slice(0, 20)}
         </h4>
       </div>
-      <h4>{area}</h4>
-      {/* stars */}
-      <div className="flex flex-col mt-2">
+      <div className="flex items-center gap-2 mt-2">
         <div
-          className={`flex items-center gap-1 ${
-            avgRating >= 4 ? "bg-green-500" : "bg-yellow-500"
-          } p-1 rounded-xl mt-2 mb-2 justify-center`}
+          className={`flex items-center gap-1.5 ${
+            avgRating >= 4 ? "bg-green-500" : "bg-red-500"
+          } p-1.5 rounded-xl mt-2 mb-2 justify-center`}
         >
-          <div className="flex text-white">{stars}</div>
-          <h4 className="text-white ">{avgRating}</h4>
+          <div className="flex text-white">
+            <FaStar />
+          </div>
+
+          <h4 className="text-white ">{avgRating.toFixed(1)}</h4>
         </div>
 
         <span className="flex justify-evenly ">
@@ -52,23 +54,6 @@ const Card = ({
     </div>
   );
 };
-
-// Higher Order Component
-
-/*
-
-      <div className="absolute left-[-10px] top-[-10px] ">
-        {isOpened ? (
-          <div className="bg-red-400 text-white px-3 py-1 rounded-xl ">
-            closed
-          </div>
-        ) : (
-          <div className="bg-green-500 text-white px-3 py-1 rounded-xl">
-            open
-          </div>
-        )}
-      </div>
- */
 
 export const withIfOpened = (Card) => {
   return (props) => {

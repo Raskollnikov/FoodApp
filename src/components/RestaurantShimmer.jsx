@@ -1,7 +1,12 @@
+import { useSelector } from "react-redux/es/hooks/useSelector";
+
 const array = [{ id: 0 }, { id: 1 }, { id: 2 }, { id: 3 }];
 const RestaurantShimmer = () => {
+  const dark = useSelector((store) => store.dark.isDarkMode);
+  let test = dark ? "bg-indigo-100" : "bg-[#fff]";
+
   return (
-    <div className="w-[100%]">
+    <div className={`w-[100%] `}>
       {/* About Burger */}
       <div className="w-full bg-black h-[240px] flex items-center justify-center ">
         <div className="flex gap-5 p-2">
@@ -27,13 +32,13 @@ const RestaurantShimmer = () => {
         </div>
       </div>
 
-      <div className="w-full flex flex-col items-center ">
+      <div className={`w-full  flex flex-col items-center `}>
         <div className="w-[60%] p-5 flex flex-col gap-2">
           <p className="w-[100px] h-[15px] bg-gray-200 rounded-xl"></p>
           <p className="w-[100px] h-[15px] bg-gray-200  rounded-xl"></p>
         </div>
       </div>
-      <div className="w-full  flex justify-center items-center flex-col">
+      <div className={`w-full flex justify-center items-center flex-col`}>
         {array.map((each) => {
           return (
             <div

@@ -10,7 +10,7 @@ function CartItem({ data, id, items }) {
   const image = "sppxmfyulsq2ncy0smx1";
 
   return (
-    <div className="flex justify-between">
+    <div className="flex justify-between bg-white">
       {imageId ? (
         <img
           src={IMG_CDN_URL + imageId}
