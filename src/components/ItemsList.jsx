@@ -36,8 +36,8 @@ const ItemsList = ({ data }) => {
           {price ? (price / 1000).toFixed(1) : (defaultPrice / 1000).toFixed(1)}
           $
         </p>
-        <p className="font-bold text-md mt-1">{name.slice(0, 19)}</p>
-        <h3 className="text-xs mt-1 ">{description.slice(0, 70)}</h3>
+        <p className="font-bold text-md mt-1">{name?.slice(0, 19)}</p>
+        <h3 className="text-xs mt-1 ">{description?.slice(0, 70)}</h3>
       </div>
     </div>
   );
