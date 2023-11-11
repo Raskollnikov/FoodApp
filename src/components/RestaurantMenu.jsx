@@ -35,8 +35,8 @@ const RestaurantMenu = () => {
       ) : (
         <div className={`w-[100%] ${test}`}>
           {/* About Burger */}
-          <div className="w-full bg-black p-8 flex items-center justify-center ">
-            <div className="flex gap-5 p-2">
+          <div className="w-full bg-black p-8 flex items-center justify-center flex-wrap">
+            <div className="flex gap-5 p-2 flex-wrap">
               <img
                 src={IMG_CDN_URL + ResInfo.cloudinaryImageId}
                 className="w-[250px] rounded-md"
