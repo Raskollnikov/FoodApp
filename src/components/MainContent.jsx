@@ -10,7 +10,7 @@ const MainContent = () => {
   const [data, setData] = useState([]);
   const [search, setSearch] = useState("");
   const [filteredRestaurant, setFilteredRestaurant] = useState([]);
-  console.log(filteredRestaurant[0]);
+
   const RestaurantIsOpen = withIfOpened(Card);
 
   const dark = useSelector((store) => store.dark.isDarkMode);
