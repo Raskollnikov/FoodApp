@@ -18,7 +18,6 @@ const RestaurantMenu = () => {
       each?.card?.card?.["@type"] ===
       "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
   );
-  console.log(itemsCategory[0]);
 
   const togglePanel = (index) => {
     if (index === showIndex) {
@@ -36,19 +35,21 @@ const RestaurantMenu = () => {
         <div className={`w-[100%] ${test}`}>
           {/* About Burger */}
           <div className="w-full bg-black p-8 flex items-center justify-center flex-wrap">
-            <div className="flex gap-5 p-2 flex-wrap">
+            <div className="flex gap-5 p-2 flex-wrap justify-center">
               <img
                 src={IMG_CDN_URL + ResInfo.cloudinaryImageId}
                 className="w-[250px] rounded-md"
               />
               <div className="text-white flex flex-col justify-around p-1">
-                <p className="text-6xl tracking-wide  ">{ResInfo.name}</p>
+                <p className="text-4xl md:text-6xl tracking-wide  ">
+                  {ResInfo.name}
+                </p>
                 <p className="text-md text-gray-400">
                   {ResInfo.cuisines.join(", ")}
                 </p>
 
                 {/*Delivery - Time - Cost For Two  */}
-                <div className="flex items-center gap-2 ">
+                <div className="flex items-center mt-3 gap-2 justify-center md:justify-start">
                   {/* Rating */}
                   <div className="flex items-center gap-1 bg-green-500 w-[50px] p-1 rounded-xl justify-center">
                     <div className="flex text-white">{<FaStar />}</div>

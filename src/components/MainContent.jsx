@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 import { swiggy_api_URL } from "../Utilities/ConstantLinks";
 
 import { useSelector } from "react-redux";
-import { useDispatch } from "react-redux";
 
 const MainContent = () => {
   const [data, setData] = useState([]);
@@ -16,8 +15,6 @@ const MainContent = () => {
 
   const dark = useSelector((store) => store.dark.isDarkMode);
   let test = dark ? "bg-indigo-100" : "bg-[#fff]";
-  let textTest = dark ? "text-white" : "text-black";
-  const dispatch = useDispatch();
 
   const searchBarFunc = (result, restoraunts) => {
     const results = restoraunts.filter((each) =>

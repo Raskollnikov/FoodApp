@@ -14,7 +14,6 @@ function Cart() {
   const dispatch = useDispatch();
   let total = data.reduce((total, item) => total + item.price, 0);
   let test = dark ? "bg-indigo-100" : "bg-[#fff]";
-  console.log(data);
 
   return (
     <div
