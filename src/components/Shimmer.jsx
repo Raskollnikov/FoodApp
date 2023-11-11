@@ -1,10 +1,10 @@
 const ShimmerCard = () => {
   return (
     <div
-      className="flex flex-col gap-2 border bg-white
-rounded-xl justify-between items-center cursor-pointer h-[300px] w-[170px]"
+      className="select-none py-3 h-[275px] flex flex-col w-full shadow-xl relative p-3 rounded-xl justify-between items-start 
+      cursor-pointer bg-white gap-1"
     >
-      <div className=" rounded-xl bg-gray-200 w-[170px] h-[107px]"></div>
+      <div className=" rounded-xl bg-gray-200 w-full h-[107px]"></div>
       <h2 className="bg-gray-300 w-[50px] h-[4px] rounded-sm"></h2>
 
       <div className="flex flex-col gap-2">
@@ -14,6 +14,7 @@ rounded-xl justify-between items-center cursor-pointer h-[300px] w-[170px]"
       </div>
 
       <span className="flex justify-evenly gap-2 mb-2">
+        <div className="bg-gray-300 w-[30px] h-[8px] rounded-md"></div>
         <div className="bg-gray-300 w-[80px] h-[8px] rounded-md"></div>
       </span>
     </div>
@@ -22,7 +23,7 @@ rounded-xl justify-between items-center cursor-pointer h-[300px] w-[170px]"
 
 const ShimmerParent = ({ children }) => {
   return (
-    <div className="w-full p-3 grid xl:grid-cols-5 md:grid-cols-2 sm:grid-cols-2 gap-4 ">
+    <div className="w-full pb-10 mt-10 grid grid-cols-1 xl:grid-cols-4 md:grid-cols-2 gap-7 ">
       {children}
     </div>
   );

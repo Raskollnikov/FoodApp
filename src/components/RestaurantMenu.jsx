@@ -18,6 +18,7 @@ const RestaurantMenu = () => {
       each?.card?.card?.["@type"] ===
       "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
   );
+  console.log(itemsCategory[0]);
 
   const togglePanel = (index) => {
     if (index === showIndex) {
@@ -64,51 +65,18 @@ const RestaurantMenu = () => {
           </div>
 
           {/* Categories */}
-
-          {itemsCategory?.map((each, i) => {
-            return (
-              <ResCategory
-                key={each.card.card.title}
-                data={each?.card?.card}
-                showItems={i == showIndex ? true : false}
-                setShowIndex={() => togglePanel(i)}
-              />
-            );
-          })}
-
-          {/* <div className="w-full flex flex-col items-center ">
-            <div className="w-[60%] p-5">
-              <p className="text-2xl select-none">Recomended</p>
-              <p className="text-sm select-none ">{MenuInfo.length} ITEMS</p>
-            </div>
-          </div>
-          <div className="w-full  flex justify-center items-center flex-col">
-            {MenuInfo.map((each) => {
-              const { card } = each;
-              const { info } = card;
+          <div className="w-full p-6 my-1 ">
+            {itemsCategory?.map((each, i) => {
               return (
-                <div
-                  key={info.id}
-                  className="w-[60%] cursor-pointer flex justify-between  items-center p-7 shadow-md mt-3"
-                >
-                  <div>
-                    <p className="text-xl font-bold">{info.name}</p>
-                    <p>{info.price / 1000}$</p>
-                  </div>
-                  <div className="flex flex-col items-center gap-2 w-[50%]">
-                    <img
-                      className="w-[150px]"
-                      src={IMG_CDN_URL + info.imageId}
-                    />
-                    <button className="bg-green-500 text-white rounded-xl px-6 py-2">
-                      {" "}
-                      add
-                    </button>
-                  </div>
-                </div>
+                <ResCategory
+                  key={each.card.card.title}
+                  data={each?.card?.card}
+                  showItems={i == showIndex ? true : false}
+                  setShowIndex={() => togglePanel(i)}
+                />
               );
             })}
-          </div> */}
+          </div>
         </div>
       )}
     </>
