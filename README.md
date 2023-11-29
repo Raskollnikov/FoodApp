@@ -3,7 +3,7 @@
 npm run dev
 live URL:https://grand-florentine-203333.netlify.app/
 
-Unfortunately, the API utilized in this project originates from an unfamiliar source, and contains errors. 
+Unfortunately, the API utilized in this project originates from an unfamiliar source, and contains errors.  (that's isuue of this API)
 
 
 three months ago, I developed a basic website called "LafshaEats." This project served as a starting point for my journey into web development and React. It was designed to be simple and beginner-friendly, providing me with a foundation to learn and experiment with web technologies.
