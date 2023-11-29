@@ -3,8 +3,9 @@ import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import { swiggy_api_URL } from "../Utilities/ConstantLinks";
-
+import { addItem } from "../Utilities/ImageSlice.js";
 import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
 const MainContent = () => {
   const [data, setData] = useState([]);
@@ -12,6 +13,8 @@ const MainContent = () => {
   const [filteredRestaurant, setFilteredRestaurant] = useState([]);
 
   const RestaurantIsOpen = withIfOpened(Card);
+
+  const dispatch = useDispatch();
 
   const dark = useSelector((store) => store.dark.isDarkMode);
   let test = dark ? "bg-indigo-100" : "bg-[#fff]";
@@ -36,8 +39,13 @@ const MainContent = () => {
 
   const fetchData = async () => {
     try {
+      console.log("Fetching data...");
       const data = await fetch(swiggy_api_URL);
       const toJson = await data.json();
+
+      dispatch(
+        addItem(toJson.data.cards[0].card.card.gridElements.infoWithStyle.info)
+      );
 
       setData(
         toJson?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle
@@ -48,7 +56,7 @@ const MainContent = () => {
           ?.restaurants
       );
     } catch (e) {
-      console.log(e.message);
+      console.error("Error fetching data:", e.message);
     }
   };
 

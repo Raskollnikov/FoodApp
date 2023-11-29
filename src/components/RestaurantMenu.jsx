@@ -32,36 +32,42 @@ const RestaurantMenu = () => {
       {ResInfo.length == 0 ? (
         <RestaurantShimmer />
       ) : (
-        <div className={`w-[100%] ${test}`}>
+        <div className={`w-[100%]   ${test}`}>
           {/* About Burger */}
           <div className="w-full bg-black p-8 flex items-center justify-center flex-wrap">
-            <div className="flex gap-5 p-2 flex-wrap justify-center">
-              <img
-                src={IMG_CDN_URL + ResInfo.cloudinaryImageId}
-                className="w-[250px] rounded-md"
-              />
-              <div className="text-white flex flex-col justify-around p-1">
-                <p className="text-4xl md:text-6xl tracking-wide  ">
-                  {ResInfo.name}
-                </p>
-                <p className="text-md text-gray-400">
-                  {ResInfo.cuisines.join(", ")}
-                </p>
+            {/* added */}
+            <div className="w-[90%]">
+              <div className="flex gap-10 p-2 flex-wrap justify-center">
+                <img
+                  src={IMG_CDN_URL + ResInfo.cloudinaryImageId}
+                  className="w-[250px] rounded-md"
+                />
+                <div className="text-white flex flex-col justify-around p-1">
+                  <p className="text-4xl md:text-4xl tracking-wide  ">
+                    {ResInfo.name}
+                  </p>
+                  <p className="text-md text-gray-400">
+                    {ResInfo.cuisines.join(", ")}
+                  </p>
 
-                {/*Delivery - Time - Cost For Two  */}
-                <div className="flex items-center mt-3 gap-2 justify-center md:justify-start">
-                  {/* Rating */}
-                  <div className="flex items-center gap-1 bg-green-500 w-[50px] p-1 rounded-xl justify-center">
-                    <div className="flex text-white">{<FaStar />}</div>
-                    <h4 className="text-white ">{ResInfo.avgRating}</h4>
+                  {/*Delivery - Time - Cost For Two  */}
+                  <div className="flex items-center mt-3 gap-2 justify-center md:justify-start">
+                    {/* Rating */}
+                    <div className="flex items-center gap-1 bg-green-500 w-[50px] p-1 rounded-xl justify-center">
+                      <div className="flex text-white">{<FaStar />}</div>
+                      <h4 className="text-white ">{ResInfo.avgRating}</h4>
+                    </div>
+                    <span>|</span>
+                    {/* delivery Time */}
+                    <p>
+                      {ResInfo.sla ? ResInfo.sla.deliveryTime || 3 : 3} mins
+                    </p>
+                    <span>|</span>
+                    <p>{ResInfo.costForTwoMessage}</p>
                   </div>
-                  <span>|</span>
-                  {/* delivery Time */}
-                  <p>{ResInfo.sla.deliveryTime}mins</p>
-                  <span>|</span>
-                  <p>{ResInfo.costForTwoMessage}</p>
                 </div>
               </div>
+              {/* added */}
             </div>
           </div>
 

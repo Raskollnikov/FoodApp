@@ -14,57 +14,48 @@ import { Component } from "react";
 // };
 
 // same With Class Component
-class UserWithClass extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      count: 0,
-      count2: 0,
-      data: [],
-    };
-  }
-
-  componentDidMount() {
-    const getData = async () => {
-      const datas = await fetch("https://jsonplaceholder.typicode.com/users");
-      const toJson = await datas.json();
-      this.setState({
-        data: toJson,
-      });
-    };
-
-    getData();
-  }
-
-  render() {
-    return (
-      <div className="w-full flex gap-3 flex-wrap mt-5 cursor-pointer">
-        {this.state.data.map((each) => {
-          return (
-            <div key={each.id} className="border p-4">
-              <p>name:{each.name}</p>
-              <p>userName:{each.username}</p>
-              <p>mail:{each.email}</p>
-            </div>
-          );
-        })}
-      </div>
-    );
-  }
-}
+// class UserWithClass extends Component {
+// constructor(props) {
+//   super(props);
+//   this.state = {
+//     count: 0,
+//     count2: 0,
+//     data: [],
+//   };
+// }
+// componentDidMount() {
+//   const getData = async () => {
+//     const datas = await fetch("https://jsonplaceholder.typicode.com/users");
+//     const toJson = await datas.json();
+//     this.setState({
+//       data: toJson,
+//     });
+//   };
+//   getData();
+// }
+// render() {
+//   return (
+//     // <div className="w-full flex gap-3 flex-wrap mt-5 cursor-pointer">
+//     //   {this.state.data.map((each) => {
+//     //     return (
+//     //       <div key={each.id} className="border p-4">
+//     //         <p>name:{each.name}</p>
+//     //         <p>userName:{each.username}</p>
+//     //         <p>mail:{each.email}</p>
+//     //       </div>
+//     //     );
+//     //   })}
+//     // </div>
+//   );
+// }
+// }
 
 class About extends Component {
-  constructor(props) {
-    super(props);
-  }
-
+  // constructor(props) {
+  //   super(props);
+  // }
   render() {
-    return (
-      <div>
-        <UserWithClass name="arsen" location="georgia/Usa" />
-      </div>
-    );
+    return <div></div>;
   }
 }
 export default About;

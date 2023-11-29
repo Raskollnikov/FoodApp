@@ -17,7 +17,7 @@ const Card = ({
   return (
     <div
       className={`select-none flex flex-col w-full shadow-xl relative p-3 rounded-xl justify-between items-start 
-      cursor-pointer bg-white gap-1`}
+      cursor-pointer bg-white gap-1 hover:scale-105 transition-all duration-150`}
     >
       <img
         className="w-full rounded-xl "
@@ -30,7 +30,7 @@ const Card = ({
         <h2 className="font-bold">{name.slice(0, 18)}</h2>
 
         <h4 className=" flex   text-center">
-          {cuisines.join(", ").slice(0, 20)}
+          {cuisines.slice(0, 2).join(", ")}
         </h4>
       </div>
       <div className="flex items-center gap-2 mt-2">

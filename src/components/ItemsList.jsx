@@ -15,7 +15,7 @@ const ItemsList = ({ data }) => {
   return (
     <div
       key={id}
-      className=" flex flex-col md:flex-row justify-between items-start md:items-center  shadow-md rounded-xl mt-5 p-4 gap-4"
+      className="flex flex-col md:flex-row justify-between items-start md:items-center  shadow-md rounded-xl mt-5 p-4 gap-4"
     >
       <div className="w-full md:w-3/12 flex flex-col items-center relative">
         {imageId ? (
